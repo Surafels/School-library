@@ -33,7 +33,7 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Has 3 functions**
+- **Manage school library**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
