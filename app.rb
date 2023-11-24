@@ -4,14 +4,13 @@ require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
 
-
 class App
-  attr_reader :books, :person, rentals
+  attr_reader :books, :people, :rentals
 
   def initialize
-    @book = []
-    @person = []
-    @rental = []
+    @books = []
+    @people = []
+    @rentals = []
   end
 
   def list_all_books
@@ -23,14 +22,14 @@ class App
     puts 'List of People:'
     @people.each do |person|
       if person.is_a?(Student)
-      puts "[Student] Name:#{persone.name}, ID:#{person.id}, Age: #{person.age}"
+        puts "[Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       elsif person.is_a?(Teacher)
-        puts "[Teacher] Name: #{persone.name}, ID:#{person.id}, Age: #{person.age}"
+        puts "[Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       else
-        puts 'Invalid either student or teacher please'
+        puts 'Invalid person type'
+      end
     end
   end
-
 
   def create_a_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
@@ -46,8 +45,7 @@ class App
     person =
       if person_type == '1'
         print 'Has parent permission? [Y/N]: '
-        parent_permission = gets.chomp
-        parent_permission = parent_permission.downcase == 'y'
+        parent_permission = gets.chomp.downcase == 'y'
         Student.new(name: name, age: age, parent_permission: parent_permission)
       elsif person_type == '2'
         print 'Specialization: '
