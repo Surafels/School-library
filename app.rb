@@ -4,36 +4,35 @@ require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
 
-class App
-  attr_reader :books, :people, :rentals
 
+class App
   def initialize
-    @books = []
     @people = []
+    @books = []
     @rentals = []
   end
 
   def list_all_books
-    puts 'List of all Books:'
+    puts 'List of all books:'
     @books.each { |book| puts "#{book.title} written by: #{book.author}" }
   end
 
   def list_all_people
-    puts 'List of People:'
+    puts 'List of people:'
     @people.each do |person|
       if person.is_a?(Student)
-        puts "[Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        puts "[Student]  Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       elsif person.is_a?(Teacher)
-        puts "[Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        puts "[Teacher] Name: #{person.name}, ID: #{person.id},  Age: #{person.age},
+        "
       else
-        puts 'Invalid person type'
+        puts 'Invalid either student or teacher please'
       end
     end
   end
 
   def create_a_person # rubocop:todo Metrics/MethodLength
-    print 'Do you want to create a student (1) or a teacher (2)?
-     [Input the number]: '
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     person_type = gets.chomp
     if person_type != '1' && person_type != '2'
       puts 'Invalid option'
@@ -46,7 +45,8 @@ class App
     person =
       if person_type == '1'
         print 'Has parent permission? [Y/N]: '
-        parent_permission = gets.chomp.downcase == 'y'
+        parent_permission = gets.chomp
+        parent_permission = parent_permission.downcase == 'y'
         Student.new(name: name, age: age, parent_permission: parent_permission)
       elsif person_type == '2'
         print 'Specialization: '
@@ -97,9 +97,9 @@ class App
     end
     rentals = @rentals.select { |r| r.person == person }
     if rentals.empty?
-      puts "#{person.name} has not done any rentals"
+      puts "#{person.name} has not done any  rentals"
     else
-      puts 'Rentals for:'
+      puts 'Rentals for: '
       rentals.each { |rental| puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" }
     end
   end

@@ -2,7 +2,7 @@ require_relative 'nameable'
 class Person < Nameable
   attr_accessor :name, :age, :rentals
 
-  def initialize(age, name: 'Unknown', parent_permission: true)
+  def initialize(name: 'Unknown', age: 0, parent_permission: true, id: nil) # rubocop:disable Lint/UnusedMethodArgument
     super()
     @id = Random.rand(1...1000)
     @age = age
