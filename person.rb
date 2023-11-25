@@ -1,6 +1,7 @@
 require_relative 'nameable'
 class Person < Nameable
   attr_accessor :name, :age, :rentals
+  attr_reader :id
 
   def initialize(name: 'Unknown', age: 0, parent_permission: true, id: nil) # rubocop:disable Lint/UnusedMethodArgument
     super()
@@ -13,6 +14,8 @@ class Person < Nameable
 
   def add_rental(book, date)
     Rental.new(date, book, self)
+    @rentals << rental
+    rental
   end
 
   def can_use_services?
