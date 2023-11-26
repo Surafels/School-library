@@ -5,8 +5,5 @@ class Rental
     @person = person
     @book = book
     @date = date
-
-    book.rentals << self
-    person.rentals << self
   end
 end
