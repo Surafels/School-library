@@ -1,12 +1,12 @@
 require_relative 'app'
 
-print '***************************************
-*****Welcome to your school Library****
-***************************************'
+def welcome_message
+  puts '***************************************'
+  puts '*****Welcome to your school Library****'
+  puts '***************************************'
+end
 
-app = App.new
-
-loop do
+def display_options
   # Display menu options
   puts "\nHere are your options:"
   puts '1. List all books'
@@ -16,28 +16,68 @@ loop do
   puts '5. Create a rental'
   puts '6. List rentals for a person'
   puts '7. Quit'
+end
 
+def user_choice
   print 'Enter your choice selecting a number: '
-  choice = gets.chomp.to_i
+  gets.chomp.to_i
+end
 
-  # Execute the selected option
-  case choice
-  when 1
-    app.list_all_books
-  when 2
-    app.list_all_people
-  when 3
-    app.create_a_person
-  when 4
-    app.create_book
-  when 5
-    app.create_rental
-  when 6
-    app.list_all_rentals
-  when 7
-    puts 'Exiting the app. Goodbye!'
-    exit
+def execute_choice(app, choice)
+  choices = {
+    1 => :execute_list_all_books,
+    2 => :execute_list_all_people,
+    3 => :execute_create_person,
+    4 => :execute_create_book,
+    5 => :execute_create_rental,
+    6 => :execute_list_all_rentals,
+    7 => :execute_quit
+  }
+
+  if choices.key?(choice)
+    send(choices[choice], app)
   else
     puts 'Invalid choice. Please enter a number between 1 and 7.'
   end
 end
+
+def execute_list_all_books(app)
+  app.list_all_books
+end
+
+def execute_list_all_people(app)
+  app.list_all_people
+end
+
+def execute_create_person(app)
+  app.create_a_person
+end
+
+def execute_create_book(app)
+  app.create_book
+end
+
+def execute_create_rental(app)
+  app.create_rental
+end
+
+def execute_list_all_rentals(app)
+  app.list_all_rentals
+end
+
+def execute_quit(_app)
+  puts 'Exiting the app. Goodbye!'
+  exit
+end
+
+def run_app(app)
+  loop do
+    display_options
+    choice = user_choice
+    execute_choice(app, choice)
+  end
+end
+
+welcome_message
+app = App.new
+run_app(app)
