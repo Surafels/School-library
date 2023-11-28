@@ -8,14 +8,17 @@ end
 
 def display_options
   # Display menu options
+  puts "\nPlease choose on of the following options to proceed:"
   puts "\nHere are your options:"
-  puts '1. List all books'
+  puts '***************************************'
+  puts '1. List all books
   puts '2. List all people'
   puts '3. Create a person'
   puts '4. Create a book'
   puts '5. Create a rental'
   puts '6. List rentals for a person'
   puts '7. Quit'
+  puts '***************************************'
 end
 
 def user_choice
