@@ -11,7 +11,7 @@ def display_options
   puts "\nPlease choose on of the following options to proceed:"
   puts "\nHere are your options:"
   puts '***************************************'
-  puts '1. List all books
+  puts '1. List all books'
   puts '2. List all people'
   puts '3. Create a person'
   puts '4. Create a book'
