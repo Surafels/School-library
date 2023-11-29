@@ -1,10 +1,10 @@
-require './person'
-
-class Student < Person
-  attr_reader :classroom
+class Student
+  attr_reader :classroom, :age, :name
 
   def initialize(age, name = 'Unknown', parent_permission: true, classroom: 'Unknown')
-    super(age, name, parent_permission: parent_permission)
+    @age = age
+    @name = name
+    @parent_permission = parent_permission
     @classroom = classroom
   end
 
@@ -13,11 +13,11 @@ class Student < Person
   end
 
   def display_info
-    "[Student] name: #{name}, ID: #{id}, Age: #{age}"
+    "[Student] name: #{name}, ID: #{object_id}, Age: #{age}"
   end
 
   def classroom=(classroom)
     @classroom = classroom
-    classroom.students.push(self) unless classroom.students.include?(self)
+    classroom.add_student(self) unless classroom.students.include?(self)
   end
 end
