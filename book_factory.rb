@@ -19,5 +19,5 @@ module BookFactory
     books_data.each do |book_data|
       books_manager.books << create_book_from_data(book_data)
     end
-    end
+  end
 end
