@@ -64,6 +64,9 @@ Clone this repository to your desired folder:
   👤 **Surafel Samson**
 - GitHub: [@githubhandle](https://github.com/Surafels)
 - Twitter: [@twitterhandle](https://twitter.com/SurafelSamson2)
+ 👤 **Sami Ullah Tufail**
+- GitHub: [@githubhandle](https://github.com/Sami-ullah-tufail)
+- 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

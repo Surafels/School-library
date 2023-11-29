@@ -1,12 +1,18 @@
-require_relative 'person'
+require './person'
 
 class Teacher < Person
-  def initialize(age:, specialization:, parent_permission: true, name: 'Unknown')
-    super(age: age, parent_permission: parent_permission, name: name, id: rand(1...1000))
+  attr_accessor :specialization
+
+  def initialize(age, name = 'Unknown', parent_permission: true, specialization: 'Unknown')
+    super(age, name, parent_permission: parent_permission)
     @specialization = specialization
   end
 
   def can_use_services?
     true
+  end
+
+  def display_info
+    "[Teacher] name: #{name}, ID: #{id}, Age: #{age}"
   end
 end

@@ -1,21 +1,18 @@
-require_relative 'nameable'
-class Person < Nameable
-  attr_accessor :name, :age, :rentals
-  attr_reader :id
+require './nameable'
+require './rental'
+require './book'
 
-  def initialize(name: 'Unknown', age: 0, parent_permission: true, id: nil) # rubocop:disable Lint/UnusedMethodArgument
+class Person < Nameable
+  attr_accessor :name, :age, :id
+  attr_reader :rentals, :parent_permission
+
+  def initialize(age, name, parent_permission: true)
     super()
-    @id = Random.rand(1...1000)
+    @id = Random.rand(1..1000)
     @age = age
     @name = name
     @parent_permission = parent_permission
     @rentals = []
-  end
-
-  def add_rental(book, date)
-    Rental.new(date, book, self)
-    @rentals << rental
-    rental
   end
 
   def can_use_services?
@@ -24,6 +21,10 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def add_rental(date, book)
+    Rental.new(date, book, self)
   end
 
   private
