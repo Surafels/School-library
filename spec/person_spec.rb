@@ -1,4 +1,4 @@
-require_relative 'person'
+require './person'
 require 'rspec'
 
 RSpec.describe Person do
